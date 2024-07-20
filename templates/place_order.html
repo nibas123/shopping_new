@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<section >
+
+   
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{message}}</strong>
+      </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<section class="bg0 p-t-95 p-b-140">
+    <div class="container">
+
+        
+        
+                
+                <div class="p-b-10">
+                    <h3 class="ltext-103 cl5">
+                        Enter the Destination Address
+                    </h3>
+                </div>
+                    
+
+                    <form method="POST" action="{{ url_for('place_order') }}">
+                        
+                        <div class="col-md-6">
+                           <div class="form-group">
+                               <label>Name <span style="color:red;"> * </span></label>
+                               <input type="text" class="form-control" name="user_name" placeholder="Enter Recipeint Name" id="user_name" required>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                               <label>Address <span style="color:red;"> * </span></label>
+                               <textarea rows="2" class="form-control" name="address" placeholder="Enter Address" id="address" required></textarea>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>City <span style="color:red;"> * </span></label>
+                                <input type="text" class="form-control" name="city" placeholder="Enter city name" id="user_name" required>
+                            </div>
+                        </div>  
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>State <span style="color:red;"> * </span></label>
+                                <input type="text" class="form-control" name="state" placeholder="Enter State" id="user_name" required>
+                            </div>
+                        </div>   
+                        <div class="col-md-6">
+                           <div class="form-group">
+                               <label>Phone Number <span style="color:red;"> * </span></label>
+                               <input type="text" class="form-control" name="contact_no" placeholder="Enter Phone_number" id="phone_number" required>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button type="submit" name="submit" class="btn btn-info">Place Order</button>
+                            </div>
+                        </div>
+                    </form>
+        
+    </div>
+</section>
+{% endblock %}

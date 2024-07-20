@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<section class="bg0 p-t-95 p-b-140">
+    <div class="container">     
+   {% if data %}
+   <div class="p-b-20">
+    <h1 class="ltext-103 cl5">
+      
+       {{data[0]}} Feedback
+    </h1>
+</div>
+<form action="{{ url_for('feedback') }}" method="POST">
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="form-group">Bill No.</label>
+        <label class="form-group">{{data[1]}}</label>
+        <input type="hidden" name="submit1" value="{{data[0]}}">
+        <input type="hidden" name="bill_no" value="{{data[1]}}">
+    </div>
+ </div>
+ <div class="col-md-6">
+ <div class="form-group">
+    <label>Please Enter Response</label>
+    <textarea class="form-control" name="feedback" required ></textarea>
+</div>
+</div>
+<div class="form-group">
+    
+    <button type="submit"  name="submit" class="btn btn-info">Request</button>
+
+</div>
+</form>
+</div>
+   </div>
+{% endif %}
+</div>
+</section>
+
+{% endblock %}

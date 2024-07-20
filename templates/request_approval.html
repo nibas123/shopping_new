@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<section class="bg0 p-t-95 p-b-140">
+    <div class="container">
+
+        <div class="p-b-20">
+            <h3 class="ltext-103 cl5">
+                {{data[0]}} Details
+            </h3>
+        </div>
+        
+   {% if data %}
+   
+    
+    
+   <div class="container-fluid">
+       <div class="row">
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th>Bill No.</th>
+        <th>Reason For Request</th>
+        <th>Request By</th>
+        <th>Date</th>
+        <th colspan="2" style="text-align: center;">Action</th>
+      </tr>
+      {% if data[0] =='Cancel' %}
+      {% for row in data[1:] %}
+      {% for r in row%}
+      <form method="POST" action = "{{url_for('request_approval_cancel')}}">
+      <tr>
+        <input type="hidden" name="id" value="{{r[0]}}">
+        <td>{{r[1]}}</td>
+        <td>{{r[2]}}</td>
+        <td>{{r[3]}}</td>
+        <td>{{r[4]}}</td>
+        <td><input type="submit" name="submit" class="btn-info" value="Approve" ></td>
+        <td><input type="submit" name="submit" class="btn-danger" value="Decline" ></td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+      {% elif data[0] =='Return' %}
+      {% for row in data[1:] %}
+      {% for r in row%}
+      <form method="POST" action = "{{url_for('request_approval_return')}}">
+      <tr>
+        <input type="hidden" name="id" value="{{r[0]}}">
+        <td>{{r[1]}}</td>
+        <td>{{r[2]}}</td>
+        <td>{{r[3]}}</td>
+        <td>{{r[4]}}</td>
+        <td><input type="submit" name="submit" class="btn-info" value="Approve" ></td>
+        <td><input type="submit" name="submit" class="btn-danger" value="Decline" ></td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+      {% endif %}
+    </table>
+      
+    </form>
+
+
+   </div>
+   </div>
+{% endif %}
+</div>
+<div class="col-md-2"></div>
+</section>
+
+{% endblock %}

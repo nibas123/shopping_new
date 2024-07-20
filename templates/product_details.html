@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<section class="bg0 p-t-95 p-b-140">
+    <div class="container">
+
+<div class="row" >
+<div class="col-12">
+
+    <div class="p-b-20">
+        <h3 class="ltext-103 cl5">
+            Product Details
+        </h3>
+    </div>
+
+     
+   {% if data %}
+   <form method="POST" action = "{{ url_for('add_cart') }}">
+   <table id="" >
+<tbody>
+    <tr>
+        <input type="hidden" id="id" name="id" value="{{ data[0] }}">
+        <input type="hidden" id="name" name="name" value="{{ data[1] }}">
+        <input type="hidden" id="desc" name="desc" value="{{ data[2] }}">
+        <input type="hidden" id="cost" name="cost" value="{{ data[3] }}">
+        <input type="hidden" id="cost" name="img" value="{{ data[5] }}">
+    <th >Product Name</th><td>{{data[1]}}</td></tr>
+    <tr><th>Description</th><td>{{data[2]}}</td></tr>
+    <tr><th>Price </th><td>{{data[3]}}</td></tr>
+    <tr>
+        <th> Image :</th>
+        <td><img src="{{data[5]}}" alt="Picture of {{data[1]}}"></td>
+    </tr>
+    <tr>
+        <th>Quantity</th>
+        <td><input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" max="10"></td>
+    </tr>
+    <tr><th>Action </th><td><input type="submit" id="Edit"  class="btn btn-primary" name="Edit" value="Add to Cart"></td></tr>
+    </tr>
+</tbody></table>
+
+</form>
+
+{% endif %}
+
+</div>
+</div>
+
+       
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+</section>
+
+{% endblock %}

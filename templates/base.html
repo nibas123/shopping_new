@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/shop-homepage.css')}}">
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/slick.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/style.css')}}">
+
+    <style>
+        .navbar-nav li a {
+            padding-left: 20px;
+        }
+
+        .section_padding {
+            padding: 50px 0px !important;
+        }
+        th{
+            padding:10px;
+        }
+        
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+
+                <a href="/">Estore.</a>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+                    {% if session['user_type']  == "buyer" %}
+                    
+                    <li><a href="view_product_status">View Order Status </a></li>
+                    <li><a href="search">Search</a></li>
+                    <li><a href="view_cart">Cart</a></li>
+                    <li><a href="complaint">Lodge Complaint</a></li>
+                    <!-- <li><a href="notice">Request Status</a></li> -->
+
+                    {% elif session['user_type'] == "seller" %}
+                    <li><a href="product_list">Product list</a></li>
+                    <li><a href="update_product_status">Update Order Status </a></li>
+                    <li><a href="insert_product">Insert Product</a></li>
+                    
+                    {% elif session['user_type'] == "admin" %}
+
+                    <li><a href="buyer_signup">Buyer Registration</a></li>
+                    <li><a href="request_approval_cancel">Request for Cancelation</a></li>
+                    <li><a href="request_approval_return">Request for Return</a></li>
+                    <li><a href="complaint_approval">Complaint Request</a></li>
+                    <li><a href="sellers">Sellers</a></li>
+                    {% endif %}
+                    {% if session['user_type'] %}
+                    <ul class="contact-now">
+                        <li class="d-none d-lg-block"> <a href="logout">Sign Out</a></li>
+                    </ul>
+                    {% else %}
+
+                    <li class="d-none d-lg-block"> <a href="signup">Sign Up</a></li>
+                    
+                    <li class="d-none d-lg-block"> <a href="login">Sign In</a></li>
+                    <!-- <ul class="contact-now">
+                    </ul> -->
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img src="{{ url_for('static', filename ='assets/img/logo/logo.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader Start -->
+
+        <!-- slider Area Start-->
+
+
+        <!-- slider Area End-->
+
+        <!-- ================ contact section start ================= -->
+
+        <!-- ================ contact section end ================= -->
+
+        <!-- Gallery Start-->
+        <!-- <div class="gallery-wrapper lf-padding">
+        <div class="gallery-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="gallery-items">
+                        <img src="{{ url_for('static', filename ='assets/img/gallery/gallery1.jpg')}}" alt="">
+                    </div> 
+                    <div class="gallery-items">
+                        <img src="{{ url_for('static', filename ='assets/img/gallery/gallery2.jpg')}}" alt="">
+                    </div>
+                    <div class="gallery-items">
+                        <img src="{{ url_for('static', filename ='assets/img/gallery/gallery3.jpg')}}" alt="">
+                    </div>
+                    <div class="gallery-items">
+                        <img src="{{ url_for('static', filename ='assets/img/gallery/gallery4.jpg')}}" alt="">
+                    </div>
+                    <div class="gallery-items">
+                        <img src="{{ url_for('static', filename ='assets/img/gallery/gallery5.jpg')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+        <!-- Gallery End-->
+        {% block content %}
+        {% endblock %}
+        <footer>
+            <!-- Footer Start-->
+            <div class="footer-area footer-padding">
+                <div class="container">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img
+                                                src="{{ url_for('static', filename ='assets/img/logo/logo2_footer.png')}}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="footer-tittle">
+                                        <div class="footer-pera">
+                                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod
+                                                tempor incididunt ut labore.</p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- Footer bottom -->
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-7 col-md-7">
+                            <div class="footer-copy-right">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                    This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a
+                                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5">
+                            <div class="footer-copy-right f-right">
+                                <!-- social -->
+                                <div class="footer-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer End-->
+        </footer>
+
+        <!-- JS here -->
+
+        <!-- All JS Custom Plugins Link Here here -->
+        <script src="{{ url_for('static', filename ='./assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+
+        <!-- Jquery, Popper, Bootstrap -->
+        <script src="{{ url_for('static', filename ='./assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/popper.min.js')}}"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <!-- Jquery Mobile Menu -->
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.slicknav.min.js')}}"></script>
+
+        <!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{ url_for('static', filename ='./assets/js/owl.carousel.min.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/slick.min.js')}}"></script>
+
+        <!-- One Page, Animated-HeadLin -->
+        <script src="{{ url_for('static', filename ='./assets/js/wow.min.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/animated.headline.js')}}"></script>
+
+        <!-- Scrollup, nice-select, sticky -->
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.scrollUp.min.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.sticky.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.magnific-popup.js')}}"></script>
+
+        <!-- contact js -->
+        <script src="{{ url_for('static', filename ='./assets/js/contact.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.form.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.validate.min.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/mail-script.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/jquery.ajaxchimp.min.js')}}"></script>
+
+        <!-- Jquery Plugins, main Jquery -->
+        <script src="{{ url_for('static', filename ='./assets/js/plugins.js')}}"></script>
+        <script src="{{ url_for('static', filename ='./assets/js/main.js')}}"></script>
+
+    </body>
+
+</html>

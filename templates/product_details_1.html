@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% if data %}
+
+<form method="POST" action="{{ url_for('product_details_2') }}">
+    <input type="hidden" id="id" name="id" value="{{ data[0] }}">
+    <input type="hidden" id="id" name="name" value="{{ data[1] }}">
+    <input type="hidden" id="id" name="desc" value="{{ data[2] }}">
+    <input type="hidden" id="id" name="cost" value="{{ data[3] }}">
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Address <span style="color:red;"> * </span></label>
+                                      <input type="text" class="form-control" name="address" placeholder="Enter Product Name" id="user_name" required>
+                                  </div>
+                               </div>
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Quantity <span style="color:red;"> * </span></label>
+                                      <textarea rows="2" class="form-control" name="quantity" placeholder="Enter Description" id="user_type" required></textarea>
+                                  </div>
+                               </div>
+                               
+                              
+                               
+                               <input type="submit" class="btn btn-primary" name="submit" value="Submit"> 
+                               </form>
+                               {% endif %}
+                               {% endblock %}

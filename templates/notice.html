@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+  {% for message in messages %}
+  <div class="alert alert-success">
+    <strong>Success!</strong> {{message}}
+  </div>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<section class="bg0 p-t-95 p-b-140">
+  <div class="container">
+
+    <div class="p-b-20">
+      <h3 class="ltext-103 cl5">
+        Request Status
+      </h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      {%if complaint %}
+      <table class="table table-bordered table-hover">
+        <tr>
+          <th>Complaint No.</th>
+          <th>complaint</th>
+          <th>Response</th>
+        </tr>
+        {% for row in complaint %}
+        <tr>
+          <th>{{row[0]}}</th>
+          <th>{{row[0]}}</th>
+          <th>{{row[0]}}</th>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      {%if cancel_history %}
+      <table class="table table-bordered table-hover">
+        <tr>
+          <th>Complaint No.</th>
+          <th>complaint</th>
+          <th>Response</th>
+        </tr>
+        {% for row in complaint %}
+        <tr>
+          <th>{{row[0]}}</th>
+          <th>{{row[0]}}</th>
+          <th>{{row[0]}}</th>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+
+
+</section>
+
+{% endblock %}

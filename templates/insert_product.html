@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="login_part section_padding ">
+
+    
+
+    <div class="container">
+
+        <div class="row">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <form method='POST' enctype="multipart/form-data" action="{{ url_for('insert_product') }}">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Name <span style="color:red;"> * </span></label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" id="user_name"
+                        required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Category <span style="color:red;"> * </span></label>
+                    <select class="form-control " name="category" id="category" required>
+                        <option value="electronics">Electronics</option>
+                        <option value="mobiles">Mobiles</option>
+                        <option value="clothing">Clothing</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Description <span style="color:red;"> * </span></label>
+                    <textarea rows="2" class="form-control" name="desc" placeholder="Enter Description" id="user_type"
+                        required></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Cost<span style="color:red;"> * </span></label>
+                    <input type="number" class="form-control" name="cost" placeholder="Enter Cost of Product"
+                        id="password" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Image <span style="color:red;"> (275 x 150) * </span></label>
+                    <input type="file" class="form-control" name="image" placeholder="select Image" required>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+            </div>
+
+
+        </form>
+
+    </div>
+</section>
+
+
+{% endblock %}

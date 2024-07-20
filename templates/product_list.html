@@ -1,0 +1,59 @@
+ {% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<section class="bg0 p-t-95 p-b-140">
+    <div class="container">
+
+        <div class="p-b-20">
+            <h3 class="ltext-103 cl5">
+                Product Details
+            </h3>
+        </div>
+        
+   {% if data %}
+   
+    
+    
+   <div class="container-fluid">
+       <div class="row">
+    {% for row in data %}
+    <form method="POST" action = "{{url_for('product_details')}}">
+
+    <div class="col-md-6" style="padding-top: 6px;">
+    <div class="card" style="width: 15rem;" >
+    <input type="hidden" id="id" name="id" value="{{ row[0] }}">
+    <input type="hidden" id="id" name="name" value="{{ row[1] }}">
+    <input type="hidden" id="id" name="desc" value="{{ row[2] }}">
+    <input type="hidden" id="id" name="cost" value="{{ row[4]}}">
+    <input type="hidden" id="id" name="im" value="{{ row[3]}}">
+        <img class="card-img-top" src="{{row[3]}}" alt="Image of {{row[1]}}" width="272px" height="144px">
+        <div class="card-body"> 
+          <h5 class="card-title">{{row[1]}}</h5>
+          <p class="card-text">Price : {{row[4]}}</p>
+          <input type="submit" class="btn btn-primary"value="More" name="submit">
+        </div>
+    </div>
+    </div>
+    </form>
+
+{% endfor %}
+   </div>
+   </div>
+{% endif %}
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+</section>
+
+{% endblock %}

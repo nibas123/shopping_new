@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <strong>Success!</strong> {{message}}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<section class="bg0 p-t-95 p-b-140">
+    <div class="container">     
+   {% if data %}
+   <div class="p-b-20">
+    <h3 class="ltext-103 cl5">
+      
+       <p> Your Cart</p>
+    </h3>
+</div>
+   <table class="table table-hover table-bordered" id="employees" >
+<tbody>
+    <tr>
+    <th> Product Name</th>
+    <th>Price </th>
+    <th>image</th>
+    <th>Quantity</th>
+    
+    </tr>
+    <form method="POST" action = "{{url_for('place_order1')}}">
+
+
+    {% for row in data %}
+    
+<tr>
+    <input type="hidden" id="id" name="id" value="{{ row[0] }}">
+    
+    <td> <input type="hidden" id="name" name="name" value="{{ row[6] }}">{{ row[6] }}</td>
+    <td> <input type="hidden" id="cost" name="cost" value="{{ row[3] }}"> {{ row[3] }}</label></td>
+    <td> <img class="image" src="{{row[8]}}" at="Image of {{row[8]}}" width="30px" height="30px">
+    </td>
+    <td>{{row[4]}}</th>
+   
+</tr>
+{% endfor %}
+
+</tbody></table>
+<div style="width:800px; margin:0 auto;">
+    
+   <input type="submit" id="Edit"  class="btn btn-info" name="Edit" value="Place Order">
+</div>
+
+</form>
+{% else %}
+<div class="p-b-20">
+    <h1 class="ltext-103 cl5">
+        hi
+        Your Cart is Empty
+    </h1>
+</div>
+{% endif %}
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+</section>
+
+{% endblock %}
